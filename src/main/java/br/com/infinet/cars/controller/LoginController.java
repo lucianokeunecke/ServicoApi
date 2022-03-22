@@ -1,5 +1,8 @@
 package br.com.infinet.cars.controller;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,14 @@ import java.util.SplittableRandom;
 @RestController
 @RequestMapping("/auth")
 public class LoginController {
-
+    Counter loginSucesso;
+    Counter loginErro;
+    Timer timer;
+    public LoginController(MeterRegistry meterRegistry) {
+        loginSucesso = Counter.builder("auth_login_sucesso").register(meterRegistry);
+        loginErro = Counter.builder("auth_login_error").register(meterRegistry);
+        timer = Timer.builder("database_timer").register(meterRegistry);
+    }
 
     @GetMapping
     public HttpEntity<Integer> login(){
@@ -22,15 +32,18 @@ public class LoginController {
 
             if(i > 850){
                 System.out.println("Sleeping");
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                timer.record(()-> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
             }
+            loginErro.increment();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(i);
         }
-
+        loginSucesso.increment();
         return ResponseEntity.ok().body(i);
 
     }
