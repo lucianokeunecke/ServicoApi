@@ -6,8 +6,6 @@ import br.com.infinet.cars.model.Fabricante;
 import br.com.infinet.cars.service.CarroService;
 import br.com.infinet.cars.service.FabricanteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,16 +43,9 @@ public class CarroController {
         }
         if(byId.isPresent()){
             Carro carro = byId.get();
-            try {
-                Fabricante byNome = fabricanteService.getByNome(carro.getFabricante());
-                CarroDTO build = CarroDTO.builder().fabricante(byNome).carro(carro).build();
-                return ResponseEntity.ok().body(build);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Fabricante fabricante = fabricanteService.getByNome(carro.getFabricante());
+            CarroDTO build = CarroDTO.builder().carro(carro).fabricante(fabricante).build();
+            return ResponseEntity.ok().body(build);
         }
         return ResponseEntity.notFound().build();
 
