@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS postgres.cidade
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     nome text COLLATE pg_catalog."default",
+    estado text COLLATE pg_catalog."default",
     CONSTRAINT cidade_pkey PRIMARY KEY (id)
     )
 
@@ -40,9 +41,10 @@ ALTER TABLE IF EXISTS postgres.cliente
     OWNER to postgres;
 
 
-insert into cidade (nome) values ('Blumenau');
-insert into cidade (nome) values ('Timbo');
-insert into cidade (nome) values ('Florianopolis');
+
+insert into cidade (nome, estado) values ('Blumenau', 'SC');
+insert into cidade (nome, estado) values ('Timbo', 'SC');
+insert into cidade (nome, estado) values ('Florianopolis', 'SC');
 
 insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('031.865.695-92', 'Luciano Keunecke','Rua Max Weise', 290, 'Agua Verde', '89.032-280', 'Blumenau', 'SC');
 insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('04.965.365/0001-63', 'Eletrônica Blumenau','Rua XV de Novembro', 6856, 'Centro', '89.133-270', 'Blumenau', 'SC');
