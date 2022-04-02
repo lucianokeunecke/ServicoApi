@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
-    ClienteRepository pessoaRepository;
+    ClienteRepository clienteRepository;
 
     @Override
     public void insert(Cliente cliente) {
@@ -27,12 +27,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Optional<Cliente> getById(Long id) {
-        return Optional.empty();
+        return clienteRepository.findById(id);
     }
 
     @Override
     public List<Cliente> getAll() {
-        return pessoaRepository.findAll();
+        return clienteRepository.findAll();
     }
 
     @Override
