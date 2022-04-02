@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ClienteDTO {
     Cliente cliente;
+    Cidade cidade;
 }
