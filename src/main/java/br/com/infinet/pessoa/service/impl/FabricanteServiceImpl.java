@@ -1,7 +1,7 @@
-package br.com.infinet.cars.service.impl;
+package br.com.infinet.pessoa.service.impl;
 
-import br.com.infinet.cars.model.Fabricante;
-import br.com.infinet.cars.service.FabricanteService;
+import br.com.infinet.pessoa.model.Fabricante;
+import br.com.infinet.pessoa.service.FabricanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -1,4 +1,4 @@
-package br.com.infinet.cars.model;
+package br.com.infinet.pessoa.model;
 
 import lombok.*;
 

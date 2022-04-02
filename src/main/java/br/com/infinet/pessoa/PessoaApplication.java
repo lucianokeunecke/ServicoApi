@@ -1,4 +1,4 @@
-package br.com.infinet.cars;
+package br.com.infinet.pessoa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,13 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableCaching
-public class CarsApplication {
+public class PessoaApplication {
 	@Bean
 	public RestTemplate getRestTemplate(RestTemplateBuilder restTemplateBuilder){
 		return restTemplateBuilder.build();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(CarsApplication.class, args);
+		SpringApplication.run(PessoaApplication.class, args);
 	}
 
 }

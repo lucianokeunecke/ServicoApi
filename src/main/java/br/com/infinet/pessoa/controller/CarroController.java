@@ -1,15 +1,14 @@
-package br.com.infinet.cars.controller;
+package br.com.infinet.pessoa.controller;
 
-import br.com.infinet.cars.model.Carro;
-import br.com.infinet.cars.model.CarroDTO;
-import br.com.infinet.cars.model.Fabricante;
-import br.com.infinet.cars.service.CarroService;
-import br.com.infinet.cars.service.FabricanteService;
+import br.com.infinet.pessoa.model.Carro;
+import br.com.infinet.pessoa.model.CarroDTO;
+import br.com.infinet.pessoa.model.Fabricante;
+import br.com.infinet.pessoa.service.CarroService;
+import br.com.infinet.pessoa.service.FabricanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.SplittableRandom;

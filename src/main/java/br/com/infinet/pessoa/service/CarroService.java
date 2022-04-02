@@ -1,6 +1,6 @@
-package br.com.infinet.cars.service;
+package br.com.infinet.pessoa.service;
 
-import br.com.infinet.cars.model.Carro;
+import br.com.infinet.pessoa.model.Carro;
 
 import java.util.List;
 import java.util.Optional;

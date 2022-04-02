@@ -1,4 +1,4 @@
-package br.com.infinet.cars.controller;
+package br.com.infinet.pessoa.controller;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;

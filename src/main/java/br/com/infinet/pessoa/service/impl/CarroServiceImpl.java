@@ -1,8 +1,8 @@
-package br.com.infinet.cars.service.impl;
+package br.com.infinet.pessoa.service.impl;
 
-import br.com.infinet.cars.model.Carro;
-import br.com.infinet.cars.repository.CarroRepository;
-import br.com.infinet.cars.service.CarroService;
+import br.com.infinet.pessoa.model.Carro;
+import br.com.infinet.pessoa.repository.CarroRepository;
+import br.com.infinet.pessoa.service.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
