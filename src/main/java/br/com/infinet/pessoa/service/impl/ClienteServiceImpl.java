@@ -16,27 +16,23 @@ public class ClienteServiceImpl implements ClienteService {
     ClienteRepository clienteRepository;
 
     @Override
-    public void insert(Cliente cliente) {
-
+    public void incluir(Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
     @Override
-    public void delete(Long id) {
-
+    public void excluir(Long id) {
+        clienteRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Cliente> getById(Long id) {
+    public Optional<Cliente> buscarPeloId(Long id) {
         return clienteRepository.findById(id);
     }
 
     @Override
-    public List<Cliente> getAll() {
+    public List<Cliente> buscarTodos() {
         return clienteRepository.findAll();
     }
 
-    @Override
-    public List<Cliente> top3() {
-        return null;
-    }
 }

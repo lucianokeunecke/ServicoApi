@@ -20,20 +20,20 @@ public class ClienteController {
     ClienteService clienteService;
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> getAll(){
+    public ResponseEntity<List<Cliente>> listarTodos(){
         /*SplittableRandom random = new SplittableRandom();
         int i = random.nextInt(1000);
         if(i > 900){
             throw new RuntimeException("Um Erro Ocorreu");
         }*/
-        List<Cliente> all = clienteService.getAll();
+        List<Cliente> all = clienteService.buscarTodos();
         return ResponseEntity.ok().body(all);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity< ? > getById(@PathVariable  Long id){
+    public ResponseEntity< ? > buscarPeloId(@PathVariable  Long id){
 
-        Optional<Cliente> byId = clienteService.getById(id);
+        Optional<Cliente> byId = clienteService.buscarPeloId(id);
 
         if(byId.isPresent()){
             return ResponseEntity.ok().body(byId);

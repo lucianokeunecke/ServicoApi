@@ -7,13 +7,11 @@ import java.util.Optional;
 
 public interface ClienteService {
 
-    void insert(Cliente cliente);
+    void incluir(Cliente cliente);
 
-    void delete(Long id);
+    void excluir(Long id);
 
-    Optional<Cliente> getById(Long id);
+    Optional<Cliente> buscarPeloId(Long id);
 
-    List<Cliente> getAll();
-
-    List<Cliente> top3();
+    List<Cliente> buscarTodos();
 }
