@@ -9,6 +9,8 @@ public interface ClienteService {
 
     void incluir(Cliente cliente);
 
+    void alterar(Long id, Cliente cliente);
+
     void excluir(Long id);
 
     Optional<Cliente> buscarPeloId(Long id);

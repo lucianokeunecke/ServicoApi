@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -26,6 +27,5 @@ public class Cliente implements Serializable {
     private Long numeroEndereco;
     private String bairro;
     private String cep;
-    private String cidade;
-    private String estado;
+    private Long id_cidade;
 }

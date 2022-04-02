@@ -44,4 +44,14 @@ public class ClienteController {
         clienteService.incluir(cliente);
     }
 
+    @PutMapping("/{id}")
+    public void alterar(@PathVariable  Long id, @RequestBody Cliente cliente){
+        clienteService.alterar(id, cliente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable  Long id){
+        clienteService.excluir(id);
+    }
+
 }

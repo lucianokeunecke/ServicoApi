@@ -3,6 +3,7 @@ package br.com.infinet.pessoa.service.impl;
 import br.com.infinet.pessoa.model.Cliente;
 import br.com.infinet.pessoa.repository.ClienteRepository;
 import br.com.infinet.pessoa.service.ClienteService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,16 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void incluir(Cliente cliente) {
         clienteRepository.save(cliente);
+    }
+
+    @Override
+    public void alterar(Long id, Cliente cliente) {
+
+        Cliente clienteSalvo = clienteRepository.findById(id).orElse(null);
+
+        BeanUtils.copyProperties(cliente, clienteSalvo, "id");
+
+        clienteRepository.save(clienteSalvo);
     }
 
     @Override
