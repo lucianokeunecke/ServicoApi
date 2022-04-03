@@ -2,18 +2,17 @@ package br.com.infinet.pessoa.service.impl;
 
 import br.com.infinet.pessoa.model.Cep;
 import br.com.infinet.pessoa.model.Cliente;
-import br.com.infinet.pessoa.model.Fabricante;
 import br.com.infinet.pessoa.repository.ClienteRepository;
 import br.com.infinet.pessoa.service.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -25,6 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
     RestTemplate restTemplate;
 
     @Override
+    @CacheEvict(cacheNames = "cliente", allEntries = true)
     public void incluir(Cliente cliente) {
 
         atualizarEndereco(cliente);
