@@ -87,11 +87,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cep retornarDadosApiCep(String numeroCep) {
 
-        LOGGER.info(String.format("Comunicando-se com a API Cep, passando como parâmetro o número do CEP: %s ", numeroCep));
-
         numeroCep = numeroCep.replaceAll("[^0123456789]", "");
 
         String url = String.format("http://localhost:8081/cep/%s",numeroCep);
+
+        LOGGER.info(String.format("Comunicando-se com a API Cep: %s ", url));
 
         return restTemplate.getForObject(url, Cep.class);
     }
