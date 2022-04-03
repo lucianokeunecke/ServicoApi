@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.infinet</groupId>
-	<artifactId>cars</artifactId>
+	<artifactId>cliente</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cars</name>
+	<name>cliente</name>
 	<description>Projeto para observabilidade</description>
 	<properties>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>

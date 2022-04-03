@@ -9,13 +9,13 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableCaching
-public class PessoaApplication {
+public class ClienteApplication {
 	@Bean
 	public RestTemplate getRestTemplate(RestTemplateBuilder restTemplateBuilder){
 		return restTemplateBuilder.build();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(PessoaApplication.class, args);
+		SpringApplication.run(ClienteApplication.class, args);
 	}
 
 }
