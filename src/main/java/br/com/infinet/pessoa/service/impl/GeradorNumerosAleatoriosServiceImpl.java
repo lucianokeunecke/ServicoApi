@@ -13,7 +13,7 @@ public class GeradorNumerosAleatoriosServiceImpl implements GeradorNumerosAleato
 
         SplittableRandom random = new SplittableRandom();
         int i = random.nextInt(1000);
-        if(i > 500){
+        if(i > 800){
             throw new RuntimeException("Ocorreu um erro ao processar a sua solicitação.");
         }
     }
