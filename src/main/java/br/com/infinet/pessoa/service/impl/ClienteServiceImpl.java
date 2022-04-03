@@ -24,7 +24,6 @@ public class ClienteServiceImpl implements ClienteService {
     RestTemplate restTemplate;
 
     @Override
-    @CacheEvict(cacheNames = "cliente", allEntries = true)
     public void incluir(Cliente cliente) {
 
         atualizarEndereco(cliente);
