@@ -27,6 +27,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void incluir(Cliente cliente) {
 
+        atualizarEndereco(cliente);
+
         clienteRepository.save(cliente);
     }
 
@@ -45,18 +47,20 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente atualizarEndereco(Cliente cliente) {
 
-        if (cliente.getCep().trim().length() > 0) {
+        if (!Objects.isNull(cliente.getCep())) {
 
-            Cep cep = retornarDadosCep(cliente.getCep());
+            if (cliente.getCep().trim().length() > 0) {
 
-            if (!Objects.isNull(cep)) {
-                cliente.setEndereco(cep.getLogradouro());
-                cliente.setBairro(cep.getBairro());
-                cliente.setCidade(cep.getLocalidade());
-                cliente.setEstado(cep.getUf());
+                Cep cep = retornarDadosCep(cliente.getCep());
+
+                if (!Objects.isNull(cep)) {
+                    cliente.setEndereco(cep.getLogradouro());
+                    cliente.setBairro(cep.getBairro());
+                    cliente.setCidade(cep.getLocalidade());
+                    cliente.setEstado(cep.getUf());
+                }
             }
         }
-
         return cliente;
     }
 

@@ -55,7 +55,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     public void alterar(@PathVariable  Long id, @RequestBody Cliente cliente){
 
-        //geradorNumerosAleatoriosService.gerar();
+        geradorNumerosAleatoriosService.gerar();
 
         clienteService.alterar(id, cliente);
     }
