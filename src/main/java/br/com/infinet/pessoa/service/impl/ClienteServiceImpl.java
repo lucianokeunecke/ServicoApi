@@ -82,6 +82,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cep retornarDadosCep(String numeroCep) {
 
+        numeroCep = numeroCep.replaceAll("[^0123456789]", "");
+
         String url = String.format("http://localhost:8081/cep/%s",numeroCep);
 
         return restTemplate.getForObject(url, Cep.class);
