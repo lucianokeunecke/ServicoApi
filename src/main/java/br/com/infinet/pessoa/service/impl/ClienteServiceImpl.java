@@ -43,6 +43,8 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.save(clienteSalvo);
     }
 
+    /* Caso o usuário tenha informado o CEP, os campos endereco, bairro, cidade e estado
+    * serão preenchidos de forma automatica, com base no retorno da API CEP */
     @Override
     public Cliente atualizarEndereco(Cliente cliente) {
 
@@ -50,13 +52,13 @@ public class ClienteServiceImpl implements ClienteService {
 
             if (cliente.getCep().trim().length() > 0) {
 
-                Cep cep = retornarDadosCep(cliente.getCep());
+                Cep apiCep = retornarDadosApiCep(cliente.getCep());
 
-                if (!Objects.isNull(cep)) {
-                    cliente.setEndereco(cep.getLogradouro());
-                    cliente.setBairro(cep.getBairro());
-                    cliente.setCidade(cep.getLocalidade());
-                    cliente.setEstado(cep.getUf());
+                if (!Objects.isNull(apiCep)) {
+                    cliente.setEndereco(apiCep.getLogradouro());
+                    cliente.setBairro(apiCep.getBairro());
+                    cliente.setCidade(apiCep.getLocalidade());
+                    cliente.setEstado(apiCep.getUf());
                 }
             }
         }
@@ -78,8 +80,10 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.findAll();
     }
 
+    /* Este método irá consultar a API Cep, passando como parâmetro o número do Cep
+    *  e retorando as informações do endereço do CEP. */
     @Override
-    public Cep retornarDadosCep(String numeroCep) {
+    public Cep retornarDadosApiCep(String numeroCep) {
 
         numeroCep = numeroCep.replaceAll("[^0123456789]", "");
 

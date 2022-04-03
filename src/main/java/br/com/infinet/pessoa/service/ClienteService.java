@@ -16,7 +16,7 @@ public interface ClienteService {
 
     Cliente atualizarEndereco(Cliente cliente);
 
-    Cep retornarDadosCep(String numeroCep);
+    Cep retornarDadosApiCep(String numeroCep);
 
     Optional<Cliente> buscarPeloId(Long id);
 
