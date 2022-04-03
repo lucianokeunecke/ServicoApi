@@ -22,6 +22,7 @@ ALTER TABLE IF EXISTS postgres.cliente
     OWNER to postgres;
 
 insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('031.865.695-92', 'Luciano Keunecke','Rua Max Weise', 290, 'Agua Verde', '89.032-280', 'Blumenau', 'SC');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('04.965.365/0001-63', 'Eletrônica Blumenau','Rua XV de Novembro', 6856, 'Centro', '89.133-270', 'Florianópolis', 'SC');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('085.463.695-92', 'Adriano dos Santos','Rua Jaragua', 756, 'Vila Nova', '86.654-145', 'Curitiba', 'PR');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('653.765.413-33', 'Paulo Vieira Souza','Rua das Palmeiras', 98, 'Bela Vista', '86.463-746', 'Rio do Sul', 'SC');
+insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('04.965.365/0001-63', 'Eletrônica Blumenau','Rua XV de Novembro', 6856, 'Centro', '35.182-016', 'Florianópolis', 'SC');
+insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('085.463.695-92', 'Adriano dos Santos','Rua Jaragua', 756, 'Vila Nova', '06.542-089', 'Curitiba', 'PR');
+insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('653.765.413-33', 'Paulo Vieira Souza','Rua das Palmeiras', 98, 'Bela Vista', '89.160-001', 'Rio do Sul', 'SC');
+insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('986.465.413-33', 'Adriana dos Santos','Rua das Missoes', 6354, 'Passo Manso', '84.093-073', 'Itajai', 'SC');
