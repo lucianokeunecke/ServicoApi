@@ -1,6 +1,5 @@
 package br.com.infinet.pessoa.controller;
 
-import br.com.infinet.pessoa.model.Carro;
 import br.com.infinet.pessoa.model.Cliente;
 import br.com.infinet.pessoa.service.ClienteService;
 import br.com.infinet.pessoa.service.GeradorNumerosAleatoriosService;
@@ -32,14 +31,14 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity< ? > listarPeloId(@PathVariable  Long id){
+    public ResponseEntity< ? > listarPeloId(@PathVariable Long id){
 
         geradorNumerosAleatoriosService.gerar();
 
-        Optional<Cliente> byId = clienteService.buscarPeloId(id);
+        Optional<Cliente> cliente = clienteService.buscarPeloId(id);
 
-        if(byId.isPresent()){
-            return ResponseEntity.ok().body(byId);
+        if(cliente.isPresent()){
+            return ResponseEntity.ok().body(cliente);
         }
         return ResponseEntity.notFound().build();
     }
