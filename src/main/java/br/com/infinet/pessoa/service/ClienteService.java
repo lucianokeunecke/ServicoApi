@@ -14,6 +14,8 @@ public interface ClienteService {
 
     void excluir(Long id);
 
+    Cliente atualizarEndereco(Cliente cliente);
+
     Cep retornarDadosCep(String numeroCep);
 
     Optional<Cliente> buscarPeloId(Long id);

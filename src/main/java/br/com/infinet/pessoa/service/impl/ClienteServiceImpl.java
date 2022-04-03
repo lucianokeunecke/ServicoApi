@@ -18,8 +18,6 @@ import java.util.logging.Logger;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    //private String url = "http://localhost:8081/cep/";
-
     @Autowired
     ClienteRepository clienteRepository;
 
@@ -39,19 +37,27 @@ public class ClienteServiceImpl implements ClienteService {
 
         BeanUtils.copyProperties(cliente, clienteSalvo, "id");
 
-        if (clienteSalvo.getCep().trim().length() > 0) {
+        atualizarEndereco(clienteSalvo);
 
-            Cep cep = retornarDadosCep(clienteSalvo.getCep());
+        clienteRepository.save(clienteSalvo);
+    }
+
+    @Override
+    public Cliente atualizarEndereco(Cliente cliente) {
+
+        if (cliente.getCep().trim().length() > 0) {
+
+            Cep cep = retornarDadosCep(cliente.getCep());
 
             if (!Objects.isNull(cep)) {
-                clienteSalvo.setEndereco(cep.getLogradouro());
-                clienteSalvo.setBairro(cep.getBairro());
-                clienteSalvo.setCidade(cep.getLocalidade());
-                clienteSalvo.setEstado(cep.getUf());
+                cliente.setEndereco(cep.getLogradouro());
+                cliente.setBairro(cep.getBairro());
+                cliente.setCidade(cep.getLocalidade());
+                cliente.setEstado(cep.getUf());
             }
         }
 
-        clienteRepository.save(clienteSalvo);
+        return cliente;
     }
 
     @Override
@@ -74,9 +80,7 @@ public class ClienteServiceImpl implements ClienteService {
 
         String url = String.format("http://localhost:8081/cep/%s",numeroCep);
 
-        Cep cep = restTemplate.getForObject(url, Cep.class);
-
-        return cep;
+        return restTemplate.getForObject(url, Cep.class);
     }
 
 }
