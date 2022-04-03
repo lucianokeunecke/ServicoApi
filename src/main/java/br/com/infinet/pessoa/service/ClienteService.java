@@ -1,5 +1,6 @@
 package br.com.infinet.pessoa.service;
 
+import br.com.infinet.pessoa.model.Cep;
 import br.com.infinet.pessoa.model.Cliente;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface ClienteService {
     void alterar(Long id, Cliente cliente);
 
     void excluir(Long id);
+
+    Cep retornarDadosCep(String numeroCep);
 
     Optional<Cliente> buscarPeloId(Long id);
 
