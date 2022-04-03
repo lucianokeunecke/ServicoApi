@@ -27,5 +27,6 @@ public class Cliente implements Serializable {
     private Long numeroEndereco;
     private String bairro;
     private String cep;
-    private Long id_cidade;
+    private String cidade;
+    private String estado;
 }

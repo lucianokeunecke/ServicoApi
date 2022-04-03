@@ -46,6 +46,8 @@ public class ClienteServiceImpl implements ClienteService {
             if (!Objects.isNull(cep)) {
                 clienteSalvo.setEndereco(cep.getLogradouro());
                 clienteSalvo.setBairro(cep.getBairro());
+                clienteSalvo.setCidade(cep.getLocalidade());
+                clienteSalvo.setEstado(cep.getUf());
             }
         }
 
