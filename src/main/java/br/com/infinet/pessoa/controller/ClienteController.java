@@ -3,6 +3,7 @@ package br.com.infinet.pessoa.controller;
 import br.com.infinet.pessoa.model.Carro;
 import br.com.infinet.pessoa.model.Cliente;
 import br.com.infinet.pessoa.service.ClienteService;
+import br.com.infinet.pessoa.service.GeradorNumerosAleatoriosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +18,23 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
+    @Autowired
+    GeradorNumerosAleatoriosService geradorNumerosAleatoriosService;
+
     @GetMapping
     public ResponseEntity<List<Cliente>> listarTodos(){
-        /*SplittableRandom random = new SplittableRandom();
-        int i = random.nextInt(1000);
-        if(i > 900){
-            throw new RuntimeException("Um Erro Ocorreu");
-        }*/
+
+        geradorNumerosAleatoriosService.gerar();
+
         List<Cliente> all = clienteService.buscarTodos();
+
         return ResponseEntity.ok().body(all);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity< ? > listarPeloId(@PathVariable  Long id){
+
+        geradorNumerosAleatoriosService.gerar();
 
         Optional<Cliente> byId = clienteService.buscarPeloId(id);
 
@@ -41,16 +46,25 @@ public class ClienteController {
 
     @PostMapping
     public void incluir(@RequestBody Cliente cliente){
+
+        geradorNumerosAleatoriosService.gerar();
+
         clienteService.incluir(cliente);
     }
 
     @PutMapping("/{id}")
     public void alterar(@PathVariable  Long id, @RequestBody Cliente cliente){
+
+        geradorNumerosAleatoriosService.gerar();
+
         clienteService.alterar(id, cliente);
     }
 
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable  Long id){
+
+        geradorNumerosAleatoriosService.gerar();
+
         clienteService.excluir(id);
     }
 
