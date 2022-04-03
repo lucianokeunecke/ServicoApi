@@ -6,16 +6,18 @@ import br.com.infinet.pessoa.repository.ClienteRepository;
 import br.com.infinet.pessoa.service.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
+
+    private static final Logger LOGGER = Logger.getLogger(ClienteServiceImpl.class.getName());
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -81,9 +83,11 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     /* Este método irá consultar a API Cep, passando como parâmetro o número do Cep
-    *  e retorando as informações do endereço do CEP. */
+    *  e terá como retorno as informações do endereço do CEP. */
     @Override
     public Cep retornarDadosApiCep(String numeroCep) {
+
+        LOGGER.info(String.format("Comunicando-se com a API Cep, passando como parâmetro o número do CEP: %s ", numeroCep));
 
         numeroCep = numeroCep.replaceAll("[^0123456789]", "");
 
