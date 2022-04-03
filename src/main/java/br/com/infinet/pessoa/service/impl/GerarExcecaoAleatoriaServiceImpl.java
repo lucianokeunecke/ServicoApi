@@ -1,13 +1,14 @@
 package br.com.infinet.pessoa.service.impl;
 
-import br.com.infinet.pessoa.service.GeradorNumerosAleatoriosService;
+import br.com.infinet.pessoa.service.GerarExcecaoAleatoriaService;
 import org.springframework.stereotype.Service;
 
 import java.util.SplittableRandom;
 
 @Service
-public class GeradorNumerosAleatoriosServiceImpl implements GeradorNumerosAleatoriosService {
+public class GerarExcecaoAleatoriaServiceImpl implements GerarExcecaoAleatoriaService {
 
+    /* Este método irá gerar excecao de forma aleatória servindo como base para gerar métricas */
     @Override
     public void gerar() {
 

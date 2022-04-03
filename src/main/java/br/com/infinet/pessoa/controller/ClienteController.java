@@ -2,7 +2,7 @@ package br.com.infinet.pessoa.controller;
 
 import br.com.infinet.pessoa.model.Cliente;
 import br.com.infinet.pessoa.service.ClienteService;
-import br.com.infinet.pessoa.service.GeradorNumerosAleatoriosService;
+import br.com.infinet.pessoa.service.GerarExcecaoAleatoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +18,12 @@ public class ClienteController {
     ClienteService clienteService;
 
     @Autowired
-    GeradorNumerosAleatoriosService geradorNumerosAleatoriosService;
+    GerarExcecaoAleatoriaService gerarExcecaoAleatoriaService;
 
     @GetMapping
     public ResponseEntity<List<Cliente>> listarTodos(){
 
-        geradorNumerosAleatoriosService.gerar();
+        gerarExcecaoAleatoriaService.gerar();
 
         List<Cliente> all = clienteService.buscarTodos();
 
@@ -33,7 +33,7 @@ public class ClienteController {
     @GetMapping("/{id}")
     public ResponseEntity< ? > listarPeloId(@PathVariable Long id){
 
-        geradorNumerosAleatoriosService.gerar();
+        gerarExcecaoAleatoriaService.gerar();
 
         Optional<Cliente> cliente = clienteService.buscarPeloId(id);
 
@@ -46,7 +46,7 @@ public class ClienteController {
     @PostMapping
     public void incluir(@RequestBody Cliente cliente){
 
-        geradorNumerosAleatoriosService.gerar();
+        gerarExcecaoAleatoriaService.gerar();
 
         clienteService.incluir(cliente);
     }
@@ -54,7 +54,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     public void alterar(@PathVariable  Long id, @RequestBody Cliente cliente){
 
-        geradorNumerosAleatoriosService.gerar();
+        gerarExcecaoAleatoriaService.gerar();
 
         clienteService.alterar(id, cliente);
     }
@@ -62,7 +62,7 @@ public class ClienteController {
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable  Long id){
 
-        geradorNumerosAleatoriosService.gerar();
+        gerarExcecaoAleatoriaService.gerar();
 
         clienteService.excluir(id);
     }

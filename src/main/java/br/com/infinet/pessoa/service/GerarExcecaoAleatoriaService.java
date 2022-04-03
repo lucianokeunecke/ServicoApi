@@ -1,6 +1,6 @@
 package br.com.infinet.pessoa.service;
 
-public interface GeradorNumerosAleatoriosService {
+public interface GerarExcecaoAleatoriaService {
 
     void gerar();
 }
