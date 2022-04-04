@@ -1,6 +1,5 @@
 package br.com.infinet.pessoa.service;
 
-import br.com.infinet.pessoa.model.Cep;
 import br.com.infinet.pessoa.model.Cliente;
 
 import java.util.List;
@@ -15,8 +14,6 @@ public interface ClienteService {
     void excluir(Long id);
 
     Cliente atualizarEndereco(Cliente cliente);
-
-    Cep retornarDadosApiCep(String numeroCep);
 
     Optional<Cliente> buscarPeloId(Long id);
 

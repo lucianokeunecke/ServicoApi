@@ -3,27 +3,24 @@ package br.com.infinet.pessoa.service.impl;
 import br.com.infinet.pessoa.model.Cep;
 import br.com.infinet.pessoa.model.Cliente;
 import br.com.infinet.pessoa.repository.ClienteRepository;
+import br.com.infinet.pessoa.service.CepService;
 import br.com.infinet.pessoa.service.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
-
-    private static final Logger LOGGER = Logger.getLogger(ClienteServiceImpl.class.getName());
 
     @Autowired
     ClienteRepository clienteRepository;
 
     @Autowired
-    RestTemplate restTemplate;
+    CepService cepService;
 
     @Override
     public void incluir(Cliente cliente) {
@@ -58,7 +55,7 @@ public class ClienteServiceImpl implements ClienteService {
 
                 if (numeroCep.trim().length() == 8) {
 
-                    Cep apiCep = retornarDadosApiCep(numeroCep);
+                    Cep apiCep = cepService.pesquisar(numeroCep);
 
                     if (!Objects.isNull(apiCep)) {
 
@@ -94,18 +91,6 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> buscarTodos() {
         return clienteRepository.findAll();
-    }
-
-    /* Este método irá consultar a API Cep, passando como parâmetro o número do Cep
-    *  e terá como retorno as informações do endereço do CEP. */
-    @Override
-    public Cep retornarDadosApiCep(String numeroCep) {
-
-        String url = String.format("http://localhost:8081/cep/%s",numeroCep);
-
-        LOGGER.info(String.format("Comunicando-se com a API Cep: %s ", url));
-
-        return restTemplate.getForObject(url, Cep.class);
     }
 
 }
