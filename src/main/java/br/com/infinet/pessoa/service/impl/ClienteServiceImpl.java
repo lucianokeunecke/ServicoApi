@@ -54,15 +54,27 @@ public class ClienteServiceImpl implements ClienteService {
 
             String numeroCep = cliente.getCep().replaceAll("[^0123456789]", "");
 
-            if (numeroCep.trim().length() > 0 && numeroCep.trim().length() == 8) {
+            if (numeroCep.trim().length() > 0) {
 
-                Cep apiCep = retornarDadosApiCep(numeroCep);
+                if (numeroCep.trim().length() == 8) {
 
-                if (!Objects.isNull(apiCep)) {
-                    cliente.setEndereco(apiCep.getLogradouro());
-                    cliente.setBairro(apiCep.getBairro());
-                    cliente.setCidade(apiCep.getLocalidade());
-                    cliente.setEstado(apiCep.getUf());
+                    Cep apiCep = retornarDadosApiCep(numeroCep);
+
+                    if (!Objects.isNull(apiCep)) {
+
+                        if (!Objects.isNull(apiCep.getCep())) {
+                            cliente.setEndereco(apiCep.getLogradouro());
+                            cliente.setBairro(apiCep.getBairro());
+                            cliente.setCidade(apiCep.getLocalidade());
+                            cliente.setEstado(apiCep.getUf());
+                        } else{
+                            throw new RuntimeException("O número do CEP " + numeroCep + " não se encontra cadastrado.");
+                        }
+                    } else{
+                        throw new RuntimeException("O número do CEP " + numeroCep + " não se encontra cadastrado.");
+                    }
+                } else {
+                    throw new RuntimeException("Número do CEP inválido. Informe os 8 dígitos numéricos.");
                 }
             }
         }
