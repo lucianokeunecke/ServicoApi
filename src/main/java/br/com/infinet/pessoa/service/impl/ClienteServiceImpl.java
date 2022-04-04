@@ -52,9 +52,11 @@ public class ClienteServiceImpl implements ClienteService {
 
         if (!Objects.isNull(cliente.getCep())) {
 
-            if (cliente.getCep().trim().length() > 0) {
+            String numeroCep = cliente.getCep().replaceAll("[^0123456789]", "");
 
-                Cep apiCep = retornarDadosApiCep(cliente.getCep());
+            if (numeroCep.trim().length() > 0 && numeroCep.trim().length() == 8) {
+
+                Cep apiCep = retornarDadosApiCep(numeroCep);
 
                 if (!Objects.isNull(apiCep)) {
                     cliente.setEndereco(apiCep.getLogradouro());
@@ -86,8 +88,6 @@ public class ClienteServiceImpl implements ClienteService {
     *  e terá como retorno as informações do endereço do CEP. */
     @Override
     public Cep retornarDadosApiCep(String numeroCep) {
-
-        numeroCep = numeroCep.replaceAll("[^0123456789]", "");
 
         String url = String.format("http://localhost:8081/cep/%s",numeroCep);
 
