@@ -9,32 +9,34 @@ jobs:
       - name: Run a one-line script
         run: Gerando a build
 
-  deploy-ambiente-desenvolvimento:
-    runs-on: ubuntu-latest
-    environment:
-      name: ambiente-desenvolvimento
-      url: 'https://github.com/lucianokeunecke/desenvolvimento'
-    needs: build
-    steps:
-      - name: Run a one-line script
-        run: Deploy do ambiente de desenvolvimento
 
-  deploy-ambiente-homologacao:
+  deploy-dev:
     runs-on: ubuntu-latest
     environment:
-      name: deploy-ambiente-desenvolvimento
-      url: 'https://github.com/lucianokeunecke/homologacao'
+      name: dev
+      url: 'https://ClienteApi.dev.com.br'
     needs: build
     steps:
       - name: Run a one-line script
-        run: Deploy do ambiente de homologação
+        run: echo Deploy Dev
 
-  deploy-ambiente-producao:
+  deploy-hmg:
     runs-on: ubuntu-latest
     environment:
-      name: deploy-ambiente-homologacao
-      url: 'https://github.com/lucianokeunecke/producao'
-    needs: build
+      name: hmg
+      url: 'https://ClienteApi.hom.com.br'
+    needs: deploy-dev
     steps:
       - name: Run a one-line script
-        run: Deploy do ambiente de produção
+        run: echo Deploy HMG
+
+
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: 'https://ClienteApi.pro.com.br'
+    needs: deploy-hmg
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy PRD
