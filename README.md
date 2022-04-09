@@ -4,11 +4,11 @@
 
 Trabalho final da disciplina, atendendo os seguintes itens:
 
-- Projeto utilizando o Springboot;
-- Uso de TDD, utilizando os métodos JUNIT e MOCKITO0;
-- Exportação de métricas para o formato do Prometheus utilizando o micrometer.
+- Projeto utilizando Springboot;
+- Uso de TDD, utilizando métodos JUNIT e MOCKITO;
+- Exportação de métricas para o formato Prometheus, fazendo o uso de micrometer.
 - Exportação do health check do projeto com o Actuator;
-- Exportação de logs do  projeto para o Papertrail;
+- Exportação de logs do projeto para o Papertrail;
 - Exportaçao de dados do projeto para o Zipkin;
 - Criação de script no TerraForm;
 - Criação de pipeline de build, utilizando o Action do Github.
