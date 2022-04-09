@@ -1,0 +1,48 @@
+variables:
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=./.m2/repository"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  ACCESS_KEY: $ACCESS_KEY
+  SECRET_KEY: $SECRET_KEY
+  JAR_NAME: "motor-service-0.0.1-SNAPSHOT.jar"
+cache:
+  paths:
+    - .m2/repository
+  key: maven
+
+stages:
+  - build
+  - test
+  - notificacao
+
+build-job:
+  stage: build
+  script:
+    - echo "Compilando codigo..."
+    - "mvn clean compile $MAVEN_CLI_OPTS"
+  artifacts:
+    paths:
+      - target/
+
+test-junit-job:
+  stage: test
+  dependencies:
+    - build-job
+  script:
+    - echo "Testando Codigo"
+    - "mvn package $MAVEN_CLI_OPTS"
+  artifacts:
+    paths:
+      - target/
+
+
+sucesso-notification:
+  stage: notificacao
+  when: on_success
+  script:
+    - echo "Sucesso"
+
+falha-notification:
+  stage: notificacao
+  when: on_failure
+  script:
+    - echo "Erro"
