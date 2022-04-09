@@ -20,7 +20,7 @@ public class LoginController {
     Timer timer;
     public LoginController(MeterRegistry meterRegistry) {
 
-        /* criando as próprias métricas. */
+        /* criando as próprias métricas */
         loginSucesso = Counter.builder("auth_login_sucesso").register(meterRegistry);
         loginErro = Counter.builder("auth_login_error").register(meterRegistry);
         timer = Timer.builder("database_timer").register(meterRegistry);
