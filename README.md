@@ -14,6 +14,6 @@ Existindo o Cep, serão atualizados de forma automática no arquivo Json os camp
 
 O objetivo desta API é integrar-se com outras API's, permitindo:
 
-- Exportar métricas para o formato do Prometheus utilizando o micrometer;
-- Exportar logs utilizando como ferramenta o Papertrail;
+- Exportar métricas para o formato do Prometheus utilizando o micrometer.
+- Exportar logs utilizando como ferramenta o Papertrail.
 - Exportar os dados para o Zipkin.
