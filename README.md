@@ -1,4 +1,8 @@
-# Trabalho apresentado no curso de Pós-Graduação em Engenharia de Software com Java no Instituto INFNET, atendendo os seguintes itens:
+# Instituto: INFNET
+# Curso: Pós-Graduação MIT em Engenharia de Software com Java
+# Disciplina: Integração Continua e DevOps
+
+Trabalho final da disciplina, atendendo os seguintes itens:
 
 - Projeto utilizando o Springboot;
 - Uso de TDD, utilizando os métodos JUNIT e MOCKITO0;
