@@ -1,4 +1,4 @@
-name: DemoNewCD
+name: Deploy
 on:
   workflow_dispatch:
 
@@ -10,15 +10,15 @@ jobs:
         run: echo Hello, world!
 
 
-  deploy-dev:
+  deploy-ambiente-desenvolvimento:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: 'julioarruda.com'
+      url: 'https://github.com/lucianokeunecke'
     needs: build
     steps:
       - name: Run a one-line script
-        run: echo Deploy Dev
+        run: Deploy do ambiente de desenvolvimento
 
   deploy-hmg:
     runs-on: ubuntu-latest
