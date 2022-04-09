@@ -7,36 +7,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        run: echo Hello, world!
-
+        run: Gerando a build
 
   deploy-ambiente-desenvolvimento:
     runs-on: ubuntu-latest
     environment:
-      name: dev
-      url: 'https://github.com/lucianokeunecke'
+      name: ambiente-desenvolvimento
+      url: 'https://github.com/lucianokeunecke/desenvolvimento'
     needs: build
     steps:
       - name: Run a one-line script
         run: Deploy do ambiente de desenvolvimento
 
-  deploy-hmg:
+  deploy-ambiente-homologacao:
     runs-on: ubuntu-latest
     environment:
-      name: hmg
-      url: 'julioarruda.com'
-    needs: deploy-dev
+      name: deploy-ambiente-desenvolvimento
+      url: 'https://github.com/lucianokeunecke/homologacao'
+    needs: build
     steps:
       - name: Run a one-line script
-        run: echo Deploy HMG
+        run: Deploy do ambiente de homologação
 
-
-  deploy-prd:
+  deploy-ambiente-producao:
     runs-on: ubuntu-latest
     environment:
-      name: prd
-      url: 'julioarruda.com'
-    needs: deploy-hmg
+      name: deploy-ambiente-homologacao
+      url: 'https://github.com/lucianokeunecke/producao'
+    needs: build
     steps:
       - name: Run a one-line script
-        run: echo Deploy PRD
+        run: Deploy do ambiente de produção
