@@ -15,7 +15,7 @@ Trabalho final da disciplina, atendendo os seguintes itens:
 
 # ClienteApi
 
-Esta API tem por objetivo incluir, alterar, excluir, consultar pessoas e cep, utilizando como banco de dados o PostgreSQL.
+Esta API permitirá incluir, alterar, excluir, consultar pessoas e cep, utilizando como banco de dados o PostgreSQL.
 
 Nos métodos POST e PUT, caso o número do Cep tenha sido informado no arquivo JSON, esta API irá comunicar-se com a API CepApi, onde esta irá se comunicar-se com o WebService ViaCep (API de terceiros), retornando um arquivo JSON do endereço correspondente do CEP.
 
