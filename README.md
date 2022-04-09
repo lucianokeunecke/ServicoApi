@@ -1,19 +1,30 @@
-# Instituto: INFNET
+# Trabalho apresentado no curso de Pós-Graduação em Engenharia de Software com Java no Instituto INFNET, atendendo os seguintes itens:
 
-# Curso: Pós-Graduação MIT em Engenharia de Software com Java
-
-# Disciplina: Integração Continua e DevOps
+- Projeto utilizando o Springboot;
+- Uso de TDD, utilizando os métodos JUNIT e MOCKITO0;
+- Exportação de métricas para o formato do Prometheus utilizando o micrometer.
+- Exportação do health check do projeto com o Actuator;
+- Exportação de logs do  projeto para o Papertrail;
+- Exportaçao de dados do projeto para o Zipkin;
+- Criação de script no TerraForm;
+- Criação de pipeline de build, utilizando o Action do Github.
 
 # ClienteApi
 
-Esta API permitirá incluir, alterar, excluir e consultar pessoas, utilizando como banco de dados o PostgreSQL.
+Esta API tem por objetivo incluir, alterar, excluir, consultar pessoas e cep, utilizando como banco de dados o PostgreSQL.
 
-Ao incluir ou alterar uma pessoa, caso o número do Cep tenha sido informado no arquivo Json, esta API irá comunicar-se com a API CepApi, onde esta irá se comunicar-se com o WebService ViaCep (API de terceiros), retornando um arquivo Json do endereço correspondente do CEP. 
+Nos métodos POST e PUT, caso o número do Cep tenha sido informado no arquivo JSON, esta API irá comunicar-se com a API CepApi, onde esta irá se comunicar-se com o WebService ViaCep (API de terceiros), retornando um arquivo JSON do endereço correspondente do CEP.
 
-Existindo o Cep, serão atualizados de forma automática no arquivo Json os campos endereco, bairro, cidade e estado do cliente.
+Existindo o Cep, serão atualizados de forma automática no arquivo JSON os campos endereco, bairro, cidade e estado do cliente.
 
-O objetivo desta API é integrar-se com outras API's, permitindo:
+Já no método GET (localhost:8080/cep/89032280), será possível consultar o endereço correspondente do Cep.
 
-- Exportar métricas para o formato do Prometheus utilizando o micrometer.
-- Exportar logs utilizando como ferramenta o Papertrail.
-- Exportar os dados para o Zipkin.
+O objetivo desta API é integrar-se com outras API's.
+
+# CepApi
+
+https://github.com/lucianokeunecke/CepApi
+
+# TerraForm
+
+https://github.com/lucianokeunecke/TerraForm
