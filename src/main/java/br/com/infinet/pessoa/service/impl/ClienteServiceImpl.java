@@ -42,37 +42,19 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.save(clienteSalvo);
     }
 
-    /* Caso o usuário tenha informado o CEP, os campos endereco, bairro, cidade e estado
-    * serão preenchidos de forma automatica, com base no retorno da API CEP */
+    /* Caso o usuário tenha informado o número do CEP, os campos endereco, bairro, cidade e estado
+    * serão preenchidos de forma automaática, com base no retorno da API CEP */
     @Override
     public Cliente atualizarEndereco(Cliente cliente) {
 
         if (!Objects.isNull(cliente.getCep())) {
+            if (cliente.getCep().trim().length() > 0) {
+                Cep cep = cepService.pesquisar(cliente.getCep());
 
-            String numeroCep = cliente.getCep().replaceAll("[^0123456789]", "");
-
-            if (numeroCep.trim().length() > 0) {
-
-                if (numeroCep.trim().length() == 8) {
-
-                    Cep apiCep = cepService.pesquisar(numeroCep);
-
-                    if (!Objects.isNull(apiCep)) {
-
-                        if (!Objects.isNull(apiCep.getCep())) {
-                            cliente.setEndereco(apiCep.getLogradouro());
-                            cliente.setBairro(apiCep.getBairro());
-                            cliente.setCidade(apiCep.getLocalidade());
-                            cliente.setEstado(apiCep.getUf());
-                        } else{
-                            throw new RuntimeException("O número do CEP " + numeroCep + " não se encontra cadastrado.");
-                        }
-                    } else{
-                        throw new RuntimeException("O número do CEP " + numeroCep + " não se encontra cadastrado.");
-                    }
-                } else {
-                    throw new RuntimeException("Número do CEP inválido. Informe os 8 dígitos numéricos.");
-                }
+                cliente.setEndereco(cep.getLogradouro());
+                cliente.setBairro(cep.getBairro());
+                cliente.setCidade(cep.getLocalidade());
+                cliente.setEstado(cep.getUf());
             }
         }
         return cliente;

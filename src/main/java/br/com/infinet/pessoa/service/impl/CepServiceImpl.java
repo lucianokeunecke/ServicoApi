@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 @Service
@@ -21,10 +22,24 @@ public class CepServiceImpl implements CepService {
     @Override
     public Cep pesquisar(String numeroCep) {
 
-        String url = String.format("http://localhost:8081/cep/%s",numeroCep);
+        numeroCep = numeroCep.replaceAll("[^0123456789]", "");
 
-        LOGGER.info(String.format("Comunicando-se com a API Cep: %s ", url));
+        if (numeroCep.trim().length() == 8) {
+            String url = String.format("http://localhost:8081/cep/%s",numeroCep);
 
-        return restTemplate.getForObject(url, Cep.class);
+            LOGGER.info(String.format("Comunicando-se com a API Cep: %s ", url));
+
+            Cep cep = restTemplate.getForObject(url, Cep.class);
+
+            if (!Objects.isNull(cep)) {
+                if (!Objects.isNull(cep.getCep())) {
+                    return cep;
+                }
+            }
+
+            throw new RuntimeException("O número do CEP " + numeroCep + " não se encontra cadastrado.");
+        }
+
+        throw new RuntimeException("Número do CEP inválido. Informe o número do CEP com 8 dígitos numéricos.");
     }
 }
