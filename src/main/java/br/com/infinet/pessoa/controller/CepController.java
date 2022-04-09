@@ -26,5 +26,4 @@ public class CepController {
 
         return ResponseEntity.ok().body(cepService.pesquisar(numeroCep));
     }
-
 }
