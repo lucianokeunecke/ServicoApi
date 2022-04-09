@@ -14,7 +14,7 @@ public class GerarExcecaoAleatoriaServiceImpl implements GerarExcecaoAleatoriaSe
 
         SplittableRandom random = new SplittableRandom();
         int i = random.nextInt(1000);
-        if(i > 800){
+        if(i > 900){
             throw new RuntimeException("Ocorreu um erro ao processar a sua solicitação.");
         }
     }
