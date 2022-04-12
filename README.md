@@ -13,13 +13,15 @@ Itens de entrega:
 
 # ClienteApi
 
-Objetivo: Esta API permitirá incluir, alterar, excluir e consultar pessoas, utilizando como banco de dados o PostgreSQL, além de permitir consultar o endereço correspodente do CEP.
+Objetivo: 
+
+Esta API permitirá incluir, alterar, excluir e consultar pessoas, utilizando como banco de dados o PostgreSQL, além de permitir consultar o endereço correspodente do CEP.
 
 Nos métodos POST e PUT, caso o número do Cep tenha sido informado no arquivo JSON, esta API irá se integrar com a CepApi que por sua vez irá se integrar com o WebService ViaCep (API de terceiros).
 
 Caso o número do CEP informado no arquivo JSON existir, serão atualizados de forma automática no arquivo JSON os campos endereco, bairro, cidade e estado do cliente.
 
-O objetivo desta API é integrar-se com outras API's, atendendo os ites de entrega relacionados acima.
+O objetivo desta API é integrar-se com outras API's, além de lançar exceções de forma aleatória com o objetivo de criar métricas, atendendo os itens de entrega relacionados acima.
 
 Observações:
 
