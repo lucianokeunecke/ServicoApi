@@ -2,7 +2,7 @@ Trabalho apresentado na disciplina de Integração Continua e DevOps, do curso d
 
 Itens de entrega:
 
-- Projeto com Springboot;
+- Projeto com Spring Boot;
 - Uso de TDD, usando os métodos JUNIT e MOCKITO;
 - Exportação de métricas para o formato Prometheus, utilizando o micrometer.
 - Exportação do health check do projeto usando o Actuator;
