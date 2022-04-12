@@ -4,7 +4,7 @@ Itens de entrega:
 
 - Projeto com Spring Boot;
 - Uso de TDD, usando os métodos JUNIT e MOCKITO;
-- Exportação de métricas para o formato Prometheus, utilizando o micrometer.
+- Exportação de métricas para o formato Prometheus, utilizando o micrometer;
 - Exportação do health check do projeto usando o Actuator;
 - Exportação de logs do projeto para o Papertrail;
 - Exportaçao de dados do projeto para o Zipkin;
