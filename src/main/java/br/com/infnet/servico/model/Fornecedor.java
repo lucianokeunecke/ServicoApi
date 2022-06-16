@@ -21,14 +21,9 @@ public class Fornecedor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String cnpjCpf;
     private String razaoSocial;
     private String nomeFantasia;
-    private String nomeContato;
-    private String telefone;
-    private String email;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
+    @OneToOne
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 }
