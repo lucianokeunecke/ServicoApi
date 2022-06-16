@@ -13,8 +13,6 @@ public interface ClienteService {
 
     void excluir(Long id);
 
-    Cliente atualizarEndereco(Cliente cliente);
-
     Optional<Cliente> buscarPeloId(Long id);
 
     List<Cliente> buscarTodos();

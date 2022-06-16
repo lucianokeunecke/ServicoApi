@@ -24,9 +24,6 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void incluir(Cliente cliente) {
-
-        atualizarEndereco(cliente);
-
         clienteRepository.save(cliente);
     }
 
@@ -37,31 +34,7 @@ public class ClienteServiceImpl implements ClienteService {
 
         BeanUtils.copyProperties(cliente, clienteSalvo, "id");
 
-        atualizarEndereco(clienteSalvo);
-
         clienteRepository.save(clienteSalvo);
-    }
-
-    /* Caso o usuário tenha informado o número do CEP, os campos endereco, bairro, cidade e estado
-    * serão preenchidos de forma automática, com base no retorno da API CEP */
-    @Override
-    public Cliente atualizarEndereco(Cliente cliente) {
-
-        /*if (!Objects.isNull(cliente.getCep())) {
-            if (cliente.getCep().trim().length() > 0) {
-                Cep cep = cepService.pesquisar(cliente.getCep());
-
-                if (cep.getLogradouro().trim().length() > 0) {
-                    cliente.setEndereco(cep.getLogradouro());
-                }
-                if (cep.getBairro().trim().length() > 0){
-                    cliente.setBairro(cep.getBairro());
-                }
-                cliente.setCidade(cep.getLocalidade());
-                cliente.setEstado(cep.getUf());
-            }
-        }*/
-        return cliente;
     }
 
     @Override
