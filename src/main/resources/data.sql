@@ -46,8 +46,14 @@ ALTER TABLE IF EXISTS postgres.cliente
 ALTER TABLE IF EXISTS postgres.fornecedor
     OWNER to postgres;
 
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('031.865.695-92', 'Luciano Keunecke','Rua Max Weise', 290, 'Agua Verde', '89.032-280', 'Blumenau', 'SC');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('04.965.365/0001-63', 'Eletrônica Blumenau','Rua XV de Novembro', 6856, 'Centro', '35.182-016', 'Florianópolis', 'SC');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('085.463.695-92', 'Adriano dos Santos','Rua Jaragua', 756, 'Vila Nova', '06.542-089', 'Curitiba', 'PR');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('653.765.413-33', 'Paulo Vieira Souza','Rua das Palmeiras', 98, 'Bela Vista', '89.160-001', 'Rio do Sul', 'SC');
-insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('986.465.413-33', 'Adriana dos Santos','Rua das Missoes', 6354, 'Passo Manso', '84.093-073', 'Itajai', 'SC');
+INSERT INTO postgres.endereco(endereco, numero_endereco, bairro, cep, cidade, estado)
+VALUES ('Rua Rezala Simão', '650', 'Santa Quitéria','80330-180', 'Curitiba','PR');
+
+insert into cliente (cnpj_cpf, nome, id_endereco) values ('031.865.695-92', 'Luciano Keunecke',1);
+insert into cliente (cnpj_cpf, nome, id_endereco) values ('04.965.365/0001-63', 'Eletrônica Blumenau',1);
+insert into cliente (cnpj_cpf, nome, id_endereco) values ('085.463.695-92', 'Adriano dos Santos',1);
+insert into cliente (cnpj_cpf, nome, id_endereco) values ('653.765.413-33', 'Paulo Vieira Souza',1);
+insert into cliente (cnpj_cpf, nome, id_endereco) values ('986.465.413-33', 'Adriana dos Santos',1);
+
+INSERT INTO postgres.fornecedor(cnpj_cpf, razaosocial, nomefantasia, nomecontato, telefone, email, id_endereco)
+VALUES ('04.965.365/0001-63', 'Eletrônica Blumenau', 'Eletrônica Blumenau', 'Teste', '(41) 99223-2843', 'eduardo_carriel@live.com', 1);
