@@ -2,9 +2,9 @@ Trabalho apresentado na disciplina de Clean Code e Padrões de Projeto, do curso
 
 Alunos:
 
-Eduardo Donato Carriel
+- Eduardo Donato Carriel
 
-Luciano Keunecke
+- Luciano Keunecke
 
 Itens de entrega:
 
