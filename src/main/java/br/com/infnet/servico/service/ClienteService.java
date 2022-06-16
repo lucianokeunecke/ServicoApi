@@ -1,6 +1,6 @@
-package br.com.infinet.pessoa.service;
+package br.com.infnet.servico.service;
 
-import br.com.infinet.pessoa.model.Cliente;
+import br.com.infnet.servico.model.Cliente;
 
 import java.util.List;
 import java.util.Optional;

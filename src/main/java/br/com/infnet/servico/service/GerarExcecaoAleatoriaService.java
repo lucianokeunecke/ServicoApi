@@ -1,4 +1,4 @@
-package br.com.infinet.pessoa.service;
+package br.com.infnet.servico.service;
 
 public interface GerarExcecaoAleatoriaService {
 

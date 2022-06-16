@@ -1,10 +1,10 @@
-package br.com.infinet.pessoa.service.impl;
+package br.com.infnet.servico.service.impl;
 
-import br.com.infinet.pessoa.model.Cep;
-import br.com.infinet.pessoa.model.Cliente;
-import br.com.infinet.pessoa.repository.ClienteRepository;
-import br.com.infinet.pessoa.service.CepService;
-import br.com.infinet.pessoa.service.ClienteService;
+import br.com.infnet.servico.model.Cep;
+import br.com.infnet.servico.model.Cliente;
+import br.com.infnet.servico.repository.ClienteRepository;
+import br.com.infnet.servico.service.CepService;
+import br.com.infnet.servico.service.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

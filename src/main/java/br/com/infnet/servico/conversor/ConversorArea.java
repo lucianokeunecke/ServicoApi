@@ -1,4 +1,4 @@
-package br.com.infinet.pessoa.conversor;
+package br.com.infnet.servico.conversor;
 
 public class ConversorArea {
 

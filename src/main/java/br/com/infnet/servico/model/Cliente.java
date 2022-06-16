@@ -1,4 +1,4 @@
-package br.com.infinet.pessoa.model;
+package br.com.infnet.servico.model;
 
 import lombok.Data;
 import lombok.Getter;

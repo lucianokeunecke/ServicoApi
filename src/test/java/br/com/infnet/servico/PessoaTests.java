@@ -1,4 +1,4 @@
-package br.com.infinet.pessoa;
+package br.com.infnet.servico;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

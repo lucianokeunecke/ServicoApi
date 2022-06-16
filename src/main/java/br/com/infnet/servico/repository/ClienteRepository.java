@@ -1,6 +1,6 @@
-package br.com.infinet.pessoa.repository;
+package br.com.infnet.servico.repository;
 
-import br.com.infinet.pessoa.model.Cliente;
+import br.com.infnet.servico.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

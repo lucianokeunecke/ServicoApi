@@ -1,10 +1,10 @@
-package br.com.infinet.pessoa;
+package br.com.infnet.servico;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClienteApplicationTests {
+class ServicoApplicationTests {
 
 	@Test
 	void contextLoads() {

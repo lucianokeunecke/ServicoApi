@@ -1,6 +1,6 @@
-package br.com.infinet.pessoa;
+package br.com.infnet.servico;
 
-import br.com.infinet.pessoa.conversor.ConversorVolume;
+import br.com.infnet.servico.conversor.ConversorVolume;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

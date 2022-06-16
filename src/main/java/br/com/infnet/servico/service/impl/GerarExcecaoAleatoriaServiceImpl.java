@@ -1,6 +1,6 @@
-package br.com.infinet.pessoa.service.impl;
+package br.com.infnet.servico.service.impl;
 
-import br.com.infinet.pessoa.service.GerarExcecaoAleatoriaService;
+import br.com.infnet.servico.service.GerarExcecaoAleatoriaService;
 import org.springframework.stereotype.Service;
 
 import java.util.SplittableRandom;

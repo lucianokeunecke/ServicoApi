@@ -1,7 +1,7 @@
-package br.com.infinet.pessoa.controller;
+package br.com.infnet.servico.controller;
 
-import br.com.infinet.pessoa.service.CepService;
-import br.com.infinet.pessoa.service.GerarExcecaoAleatoriaService;
+import br.com.infnet.servico.service.CepService;
+import br.com.infnet.servico.service.GerarExcecaoAleatoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
