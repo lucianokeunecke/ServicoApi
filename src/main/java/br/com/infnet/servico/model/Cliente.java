@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -22,10 +19,6 @@ public class Cliente implements Serializable {
     private Long id;
     private String cnpjCpf;
     private String nome;
-    private String endereco;
-    private Long numeroEndereco;
-    private String bairro;
-    private String cep;
-    private String cidade;
-    private String estado;
+    @Embedded
+    private Endereco endereco;
 }
