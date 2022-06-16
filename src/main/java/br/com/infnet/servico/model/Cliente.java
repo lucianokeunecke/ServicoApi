@@ -1,6 +1,7 @@
 package br.com.infnet.servico.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,8 @@ public class Cliente implements Serializable {
     private String nomeContato;
     private String telefone;
     private String email;
-    @Embedded
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 }
