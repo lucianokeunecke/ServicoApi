@@ -2,7 +2,6 @@ package br.com.infnet.servico.controller;
 
 import br.com.infnet.servico.model.Cliente;
 import br.com.infnet.servico.service.ClienteService;
-import br.com.infnet.servico.service.GerarExcecaoAleatoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
