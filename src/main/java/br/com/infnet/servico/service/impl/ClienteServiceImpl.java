@@ -1,16 +1,13 @@
 package br.com.infnet.servico.service.impl;
 
-import br.com.infnet.servico.model.Cep;
 import br.com.infnet.servico.model.Cliente;
 import br.com.infnet.servico.repository.ClienteRepository;
-import br.com.infnet.servico.service.CepService;
 import br.com.infnet.servico.service.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -18,9 +15,6 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     ClienteRepository clienteRepository;
-
-    @Autowired
-    CepService cepService;
 
     @Override
     public void incluir(Cliente cliente) {
