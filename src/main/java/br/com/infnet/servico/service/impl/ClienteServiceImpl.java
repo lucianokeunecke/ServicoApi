@@ -47,7 +47,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente atualizarEndereco(Cliente cliente) {
 
-        if (!Objects.isNull(cliente.getCep())) {
+        /*if (!Objects.isNull(cliente.getCep())) {
             if (cliente.getCep().trim().length() > 0) {
                 Cep cep = cepService.pesquisar(cliente.getCep());
 
@@ -60,7 +60,7 @@ public class ClienteServiceImpl implements ClienteService {
                 cliente.setCidade(cep.getLocalidade());
                 cliente.setEstado(cep.getUf());
             }
-        }
+        }*/
         return cliente;
     }
 

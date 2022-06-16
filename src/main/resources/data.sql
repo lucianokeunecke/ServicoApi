@@ -1,24 +1,49 @@
 -- Table: postgres.cliente
 
 -- DROP TABLE IF EXISTS postgres.cliente;
-
-CREATE TABLE IF NOT EXISTS postgres.cliente
+CREATE TABLE IF NOT EXISTS postgres.endereco
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    cnpj_cpf text COLLATE pg_catalog."default",
-    nome text COLLATE pg_catalog."default",
     endereco text COLLATE pg_catalog."default",
     numero_endereco integer,
     bairro text COLLATE pg_catalog."default",
     cep text COLLATE pg_catalog."default",
     cidade text COLLATE pg_catalog."default",
     estado text COLLATE pg_catalog."default",
-    CONSTRAINT pessoa_pkey PRIMARY KEY (id)
-    )
+    CONSTRAINT endereco_pkey PRIMARY KEY (id)
+) TABLESPACE pg_default;
 
-    TABLESPACE pg_default;
+CREATE TABLE IF NOT EXISTS postgres.cliente
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    cnpj_cpf text COLLATE pg_catalog."default",
+    nome text COLLATE pg_catalog."default",
+    id_endereco int,
+    CONSTRAINT pessoa_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_endereco FOREIGN KEY(id_endereco) REFERENCES endereco(id)
+) TABLESPACE pg_default;
+
+CREATE TABLE IF NOT EXISTS postgres.fornecedor
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    cnpj_cpf text COLLATE pg_catalog."default",
+    razaoSocial text COLLATE pg_catalog."default",
+    nomeFantasia text COLLATE pg_catalog."default",
+    nomeContato text COLLATE pg_catalog."default",
+    telefone text COLLATE pg_catalog."default",
+    email text COLLATE pg_catalog."default",
+    id_endereco int,
+    CONSTRAINT fornecedor_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_endereco FOREIGN KEY(id_endereco) REFERENCES endereco(id)
+) TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS postgres.endereco
+    OWNER to postgres;
 
 ALTER TABLE IF EXISTS postgres.cliente
+    OWNER to postgres;
+
+ALTER TABLE IF EXISTS postgres.fornecedor
     OWNER to postgres;
 
 insert into cliente (cnpj_cpf, nome, endereco, numero_endereco, bairro, cep, cidade, estado) values ('031.865.695-92', 'Luciano Keunecke','Rua Max Weise', 290, 'Agua Verde', '89.032-280', 'Blumenau', 'SC');

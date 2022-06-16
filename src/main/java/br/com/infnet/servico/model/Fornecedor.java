@@ -10,17 +10,19 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Data
 @NoArgsConstructor
 @Entity
 @Getter
 @Setter
-public class Cliente implements Serializable {
+public class Fornecedor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cnpjCpf;
-    private String nome;
+    private String razaoSocial;
+    private String nomeFantasia;
     private String nomeContato;
     private String telefone;
     private String email;
