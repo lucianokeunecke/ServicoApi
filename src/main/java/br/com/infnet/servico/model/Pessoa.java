@@ -27,4 +27,8 @@ public class Pessoa {
     @JsonIgnoreProperties("pessoa")
     @OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     private Endereco endereco;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_pessoa")
+    private TipoPessoa tipoPessoa;
 }
