@@ -6,22 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Getter
 @Setter
-public class Fornecedor implements Serializable {
+public class FornecedorServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String razaoSocial;
-    private String nomeFantasia;
     @OneToOne
-    @JoinColumn(name = "id_pessoa")
-    private Pessoa pessoa;
+    @JoinColumn(name = "id_fornecedor")
+    private Fornecedor fornecedor;
+    @OneToOne
+    @JoinColumn(name = "id_servico")
+    private Servico servico;
+    private BigDecimal valor;
 }

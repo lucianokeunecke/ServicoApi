@@ -36,6 +36,20 @@ CREATE TABLE IF NOT EXISTS postgres.endereco
     CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id)
 ) TABLESPACE pg_default;
 
+CREATE TABLE IF NOT EXISTS postgres.fornecedor_servico
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    endereco text COLLATE pg_catalog."default",
+    numero_endereco integer,
+    bairro text COLLATE pg_catalog."default",
+    cep text COLLATE pg_catalog."default",
+    cidade text COLLATE pg_catalog."default",
+    estado text COLLATE pg_catalog."default",
+    id_pessoa int,
+    CONSTRAINT endereco_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id)
+    ) TABLESPACE pg_default;
+
 ALTER TABLE IF EXISTS postgres.tipo_pessoa
     OWNER to postgres;
 
