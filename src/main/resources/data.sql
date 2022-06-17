@@ -36,19 +36,23 @@ CREATE TABLE IF NOT EXISTS postgres.endereco_pessoa
     CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id)
 ) TABLESPACE pg_default;
 
+CREATE TABLE IF NOT EXISTS postgres.servico
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    descricao text COLLATE pg_catalog."default",
+    CONSTRAINT servico_pkey PRIMARY KEY (id)
+) TABLESPACE pg_default;
+
 CREATE TABLE IF NOT EXISTS postgres.fornecedor_servico
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    endereco text COLLATE pg_catalog."default",
-    numero_endereco integer,
-    bairro text COLLATE pg_catalog."default",
-    cep text COLLATE pg_catalog."default",
-    cidade text COLLATE pg_catalog."default",
-    estado text COLLATE pg_catalog."default",
     id_pessoa int,
-    CONSTRAINT endereco_pkey PRIMARY KEY (id),
-    CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id)
-    ) TABLESPACE pg_default;
+    id_servico int,
+    valor decimal(10,2),
+    CONSTRAINT fornecedor_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id),
+    CONSTRAINT fk_servico FOREIGN KEY(id_servico) REFERENCES servico(id)
+) TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS postgres.tipo_pessoa
     OWNER to postgres;
@@ -57,6 +61,12 @@ ALTER TABLE IF EXISTS postgres.pessoa
     OWNER to postgres;
 
 ALTER TABLE IF EXISTS postgres.endereco_pessoa
+    OWNER to postgres;
+
+ALTER TABLE IF EXISTS postgres.servico
+    OWNER to postgres;
+
+ALTER TABLE IF EXISTS postgres.fornecedor_servico
     OWNER to postgres;
 
 insert into tipo_pessoa(descricao) values ('Cliente'), ('Fornecedor'), ('Cliente/Fornecedor');

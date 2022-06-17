@@ -18,8 +18,8 @@ public class FornecedorServico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne
-    @JoinColumn(name = "id_fornecedor")
-    private Fornecedor fornecedor;
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa fornecedor;
     @OneToOne
     @JoinColumn(name = "id_servico")
     private Servico servico;
