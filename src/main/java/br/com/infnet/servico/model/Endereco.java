@@ -12,17 +12,16 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class EnderecoPessoa {
+public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String endereco;
+    private String logradouro;
     private long numeroEndereco;
-    private String bairro;
-    private String cep;
-    private String cidade;
-    private String estado;
+    //private String complemento;
     @OneToOne
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
+    @Embedded
+    private Bairro bairro;
 }
