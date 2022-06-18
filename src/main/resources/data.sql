@@ -110,3 +110,11 @@ VALUES ('Rua Rezala Simão', '321', 'Santa Quitéria','80330-185', 'Curitiba','P
 INSERT INTO postgres.endereco_pessoa(endereco, numero_endereco, bairro, cep, cidade, estado, id_pessoa)
 VALUES ('Rua Rezala Simão', '852', 'Santa Quitéria','80330-186', 'Curitiba','PR',7);
 
+INSERT INTO postgres.servico(descricao)
+VALUES ('Pintor'), ('Encanador'), ('Barbeiro'), ('Manicure'), ('Eletricista');
+
+INSERT INTO postgres.fornecedor_servico(id_pessoa, id_servico, valor)
+VALUES (2, 1, 153.80), (5, 2, 321.50), (4, 3, 70);
+
+INSERT INTO postgres.contratacao_servico(data_contratacao, id_pessoa, id_fornecedor_servico, valor)
+VALUES (now(), 1, 1, 153.80), (now(), 3, 2, 321.50), (now(), 6, 3, 70.00);
