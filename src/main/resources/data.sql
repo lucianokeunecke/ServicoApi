@@ -54,6 +54,18 @@ CREATE TABLE IF NOT EXISTS postgres.fornecedor_servico
     CONSTRAINT fk_servico FOREIGN KEY(id_servico) REFERENCES servico(id)
 ) TABLESPACE pg_default;
 
+CREATE TABLE IF NOT EXISTS postgres.contratacao_servico
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    data_contratacao timestamp with time zone,
+                                   id_pessoa int,
+                                   id_fornecedor_servico int,
+                                   valor decimal(10,2),
+    CONSTRAINT contratacao_servico_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_pessoa FOREIGN KEY(id_pessoa) REFERENCES pessoa(id),
+    CONSTRAINT fk_fornecedor_servico FOREIGN KEY(id_fornecedor_servico) REFERENCES fornecedor_servico(id)
+) TABLESPACE pg_default;
+
 ALTER TABLE IF EXISTS postgres.tipo_pessoa
     OWNER to postgres;
 
@@ -67,6 +79,9 @@ ALTER TABLE IF EXISTS postgres.servico
     OWNER to postgres;
 
 ALTER TABLE IF EXISTS postgres.fornecedor_servico
+    OWNER to postgres;
+
+ALTER TABLE IF EXISTS postgres.contratacao_servico
     OWNER to postgres;
 
 insert into tipo_pessoa(descricao) values ('Cliente'), ('Fornecedor'), ('Cliente/Fornecedor');
