@@ -22,6 +22,7 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public void incluir(Pessoa pessoa) {
         pessoaEhValida(pessoa);
+
         pessoaRepository.save(pessoa);
     }
 
@@ -50,7 +51,7 @@ public class PessoaServiceImpl implements PessoaService {
     private void pessoaEhValida(Pessoa pessoa) {
         List<PessoaValidation> listaValidacoes = new ArrayList<>();
         listaValidacoes.add(new CNPJPessoaValidationImpl());
-        listaValidacoes.add(new CNPJJaCadastradoValidationImpl());
+        listaValidacoes.add(new CNPJJaCadastradoValidationImpl(pessoaRepository));
 
         for (PessoaValidation validacao: listaValidacoes) {
             validacao.validar(pessoa);
