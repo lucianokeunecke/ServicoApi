@@ -15,9 +15,9 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-public class TipoPessoa {
+public class TipoCadastro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Short id;
+    private Long id;
     private String descricao;
 }

@@ -18,7 +18,6 @@ public class FornecedorServicoImpl implements FornecedorServicoService {
 
     @Override
     public void incluir(FornecedorServico fornecedorServico) {
-
         fornecedorServicoRepository.save(fornecedorServico);
     }
 

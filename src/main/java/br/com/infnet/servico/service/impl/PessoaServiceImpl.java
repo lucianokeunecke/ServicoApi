@@ -3,10 +3,14 @@ package br.com.infnet.servico.service.impl;
 import br.com.infnet.servico.model.Pessoa;
 import br.com.infnet.servico.repository.PessoaRepository;
 import br.com.infnet.servico.service.PessoaService;
+import br.com.infnet.servico.validation.PessoaValidation;
+import br.com.infnet.servico.validation.impl.CNPJPessoaValidationImpl;
+import br.com.infnet.servico.validation.impl.CNPJJaCadastradoValidationImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +21,7 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public void incluir(Pessoa pessoa) {
+        pessoaEhValida(pessoa);
         pessoaRepository.save(pessoa);
     }
 
@@ -40,5 +45,15 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public List<Pessoa> buscarTodos() {
         return pessoaRepository.findAll();
+    }
+
+    private void pessoaEhValida(Pessoa pessoa) {
+        List<PessoaValidation> listaValidacoes = new ArrayList<>();
+        listaValidacoes.add(new CNPJPessoaValidationImpl());
+        listaValidacoes.add(new CNPJJaCadastradoValidationImpl());
+
+        for (PessoaValidation validacao: listaValidacoes) {
+            validacao.validar(pessoa);
+        }
     }
 }

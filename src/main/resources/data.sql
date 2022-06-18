@@ -5,7 +5,14 @@ CREATE TABLE IF NOT EXISTS postgres.tipo_pessoa
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     descricao text COLLATE pg_catalog."default",
-    CONSTRAINT cliente_pkey PRIMARY KEY (id)
+    CONSTRAINT tipo_pessoa_pkey PRIMARY KEY (id)
+) TABLESPACE pg_default;
+
+CREATE TABLE IF NOT EXISTS postgres.tipo_cadastro
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    descricao text COLLATE pg_catalog."default",
+    CONSTRAINT tipo_cadastro_pkey PRIMARY KEY (id)
 ) TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS postgres.pessoa
@@ -18,8 +25,10 @@ CREATE TABLE IF NOT EXISTS postgres.pessoa
     telefone text COLLATE pg_catalog."default",
     email text COLLATE pg_catalog."default",
     id_tipo_pessoa int,
+    id_tipo_cadastro int,
     CONSTRAINT pessoa_pkey PRIMARY KEY (id),
-    CONSTRAINT fk_tipo_pessoa FOREIGN KEY(id_tipo_pessoa) REFERENCES tipo_pessoa(id)
+    CONSTRAINT fk_tipo_pessoa FOREIGN KEY(id_tipo_pessoa) REFERENCES tipo_pessoa(id),
+    CONSTRAINT fk_tipo_cadastro FOREIGN KEY(id_tipo_cadastro) REFERENCES tipo_cadastro(id)
 ) TABLESPACE pg_default;
 
 CREATE TABLE IF NOT EXISTS postgres.endereco
@@ -70,6 +79,9 @@ CREATE TABLE IF NOT EXISTS postgres.contratacao_servico
 ALTER TABLE IF EXISTS postgres.tipo_pessoa
     OWNER to postgres;
 
+ALTER TABLE IF EXISTS postgres.tipo_cadastro
+    OWNER to postgres;
+
 ALTER TABLE IF EXISTS postgres.pessoa
     OWNER to postgres;
 
@@ -85,17 +97,20 @@ ALTER TABLE IF EXISTS postgres.fornecedor_servico
 ALTER TABLE IF EXISTS postgres.contratacao_servico
     OWNER to postgres;
 
-INSERT INTO postgres.tipo_pessoa(descricao)
+INSERT INTO postgres.tipo_pessoa (descricao)
+VALUES ('Pessoa Física'), ('Pessoa Jurídica');
+
+INSERT INTO postgres.tipo_cadastro(descricao)
 VALUES ('Cliente'), ('Fornecedor'), ('Cliente/Fornecedor');
 
-INSERT INTO postgres.pessoa(cnpj_cpf, nome, nome_fantasia, nome_contato, telefone, email, id_tipo_pessoa)
-VALUES ('031.865.695-92', 'Luciano Keunecke','','Teste 01','(41) 99922-3344)','teste01@gmail.com',1),
-       ('04.965.365/0001-63','Eletrônica Blumenau', 'Eletrônica Blumenau','Teste 02','(41) 99922-3355)','teste02@gmail.com',2),
-       ('085.463.695-92', 'Adriano dos Santos','','Teste 03','(41) 99922-3366)','teste03@gmail.com',1),
-       ('653.765.413-33', 'Paulo Vieira Souza','','Teste 04','(41) 99922-3377)','teste04@gmail.com',3),
-       ('986.465.413-33', 'Adriana dos Santos','','Teste 05','(41) 99922-3388)','teste05@gmail.com',2),
-       ('08.564.208/0001-01','Empresa Teste Cliente', 'Empresa Teste','Teste 02','(41) 99922-3355)','teste02@gmail.com',1),
-       ('08.564.208/0001-01','Empresa Teste Fornecedor', 'Empresa Teste','Teste 02','(41) 99922-3355)','teste02@gmail.com',2);
+INSERT INTO postgres.pessoa(cnpj_cpf, nome, nome_fantasia, nome_contato, telefone, email, id_tipo_cadastro, id_tipo_pessoa)
+VALUES ('031.865.695-92', 'Luciano Keunecke','','Teste 01','(41) 99922-3344)','teste01@gmail.com',1,1),
+       ('04.965.365/0001-63','Eletrônica Blumenau', 'Eletrônica Blumenau','Teste 02','(41) 99922-3355)','teste02@gmail.com',2,2),
+       ('085.463.695-92', 'Adriano dos Santos','','Teste 03','(41) 99922-3366)','teste03@gmail.com',1,1),
+       ('653.765.413-33', 'Paulo Vieira Souza','','Teste 04','(41) 99922-3377)','teste04@gmail.com',3,1),
+       ('986.465.413-33', 'Adriana dos Santos','','Teste 05','(41) 99922-3388)','teste05@gmail.com',2,1),
+       ('08.564.208/0001-01','Empresa Teste Cliente', 'Empresa Teste','Teste 02','(41) 99922-3355)','teste02@gmail.com',1,2),
+       ('08.564.208/0001-01','Empresa Teste Fornecedor', 'Empresa Teste','Teste 02','(41) 99922-3355)','teste02@gmail.com',2,2);
 
 INSERT INTO postgres.endereco(logradouro, numero_endereco, complemento, bairro, cep, cidade, estado, id_pessoa)
 VALUES ('Rua Rezala Simão', '123', 'AP 31', 'Santa Quitéria','80330-180', 'Curitiba','PR',1);

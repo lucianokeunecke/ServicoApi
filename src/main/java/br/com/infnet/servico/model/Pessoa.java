@@ -31,4 +31,8 @@ public class Pessoa {
     @ManyToOne
     @JoinColumn(name = "id_tipo_pessoa")
     private TipoPessoa tipoPessoa;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_cadastro")
+    private TipoCadastro tipoCadastro;
 }
