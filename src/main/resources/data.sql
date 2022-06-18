@@ -84,7 +84,8 @@ ALTER TABLE IF EXISTS postgres.fornecedor_servico
 ALTER TABLE IF EXISTS postgres.contratacao_servico
     OWNER to postgres;
 
-insert into tipo_pessoa(descricao) values ('Cliente'), ('Fornecedor'), ('Cliente/Fornecedor');
+INSERT INTO postgres.tipo_pessoa(descricao)
+VALUES ('Cliente'), ('Fornecedor'), ('Cliente/Fornecedor');
 
 INSERT INTO postgres.pessoa(cnpj_cpf, nome, nome_fantasia, nome_contato, telefone, email, id_tipo_pessoa)
 VALUES ('031.865.695-92', 'Luciano Keunecke','','Teste 01','(41) 99922-3344)','teste01@gmail.com',1),
