@@ -4,7 +4,7 @@ import br.com.infnet.servico.enumerator.EnumTipoPessoa;
 import br.com.infnet.servico.model.Pessoa;
 import br.com.infnet.servico.validation.PessoaValidation;
 
-public class CNPJPessoaValidationImpl implements PessoaValidation {
+public class CnpjPessoaValidationImpl implements PessoaValidation {
     @Override
     public void validar(Pessoa fornecedor) {
         if (fornecedor.getTipoPessoa().getId() == EnumTipoPessoa.PESSOA_JURIFICA.getValor()) {

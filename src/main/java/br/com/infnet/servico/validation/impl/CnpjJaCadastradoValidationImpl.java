@@ -5,11 +5,11 @@ import br.com.infnet.servico.model.Pessoa;
 import br.com.infnet.servico.repository.PessoaRepository;
 import br.com.infnet.servico.validation.PessoaValidation;
 
-public class CNPJJaCadastradoValidationImpl implements PessoaValidation {
+public class CnpjJaCadastradoValidationImpl implements PessoaValidation {
 
     private PessoaRepository pessoaRepository;
 
-    public CNPJJaCadastradoValidationImpl(PessoaRepository pessoaRepository) {
+    public CnpjJaCadastradoValidationImpl(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
     }
 
