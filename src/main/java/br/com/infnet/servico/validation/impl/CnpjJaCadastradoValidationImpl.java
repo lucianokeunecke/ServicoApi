@@ -15,10 +15,9 @@ public class CnpjJaCadastradoValidationImpl implements PessoaValidation {
 
     @Override
     public void validar(Pessoa pessoa) {
-        if (pessoa.getTipoPessoa().getId() == EnumTipoPessoa.PESSOA_JURIFICA.getValor()) {
-            if (pessoaRepository.findByCnpjCpf(pessoa.getCnpjCpf()) != null) {
-                throw new RuntimeException("CNPJ já cadastrado.");
-            }
+        if (!pessoa.EhPessoaJuridica()) return;
+        if (pessoaRepository.findByCnpjCpf(pessoa.getCnpjCpf()).orElse(null) != null) {
+            throw new RuntimeException("CNPJ já cadastrado.");
         }
     }
 }
