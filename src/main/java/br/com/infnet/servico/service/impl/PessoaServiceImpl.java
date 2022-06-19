@@ -4,8 +4,8 @@ import br.com.infnet.servico.model.Pessoa;
 import br.com.infnet.servico.repository.PessoaRepository;
 import br.com.infnet.servico.service.PessoaService;
 import br.com.infnet.servico.validation.PessoaValidation;
-import br.com.infnet.servico.validation.impl.CnpjPessoaValidationImpl;
-import br.com.infnet.servico.validation.impl.CnpjJaCadastradoValidationImpl;
+import br.com.infnet.servico.validation.impl.CnpjCpfPessoaValidationImpl;
+import br.com.infnet.servico.validation.impl.CnpjCpfPessoaJaCadastradoValidationImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,7 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public void incluir(Pessoa pessoa) {
+
         pessoaEhValida(pessoa);
 
         pessoaRepository.save(pessoa);
@@ -49,12 +50,14 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     private void pessoaEhValida(Pessoa pessoa) {
+
         List<PessoaValidation> listaValidacoes = new ArrayList<>();
-        listaValidacoes.add(new CnpjPessoaValidationImpl());
-        listaValidacoes.add(new CnpjJaCadastradoValidationImpl(pessoaRepository));
+        listaValidacoes.add(new CnpjCpfPessoaValidationImpl());
+        listaValidacoes.add(new CnpjCpfPessoaJaCadastradoValidationImpl(pessoaRepository));
 
         for (PessoaValidation validacao: listaValidacoes) {
             validacao.validar(pessoa);
         }
     }
+
 }
